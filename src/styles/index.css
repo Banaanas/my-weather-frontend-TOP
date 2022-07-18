@@ -1,0 +1,320 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 16px;
+
+  --primary-color: #1976d2;
+  --primary-light-color: #63a4ff;
+  --primary-dark-color: #004ba0;
+  --primary-text-color: #fafafa;
+}
+
+body {
+  position: relative; /* GitHub Banner */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 300px;
+  min-height: 100%;
+  padding: 0.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: var(--primary-light-color);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 1rem 1rem;
+  margin-top: 2rem;
+}
+
+.algolia-places {
+  width: 100%;
+  min-width: 250px;
+  max-width: 500px;
+}
+
+#search-box {
+  align-self: center;
+  padding: 0.3rem 2rem 0.3rem 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+#search-box::placeholder {
+  font-style: italic;
+}
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 300px;
+  height: 75%;
+}
+
+#current-location {
+  width: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  color: var(--primary-text-color);
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 2px var(--primary-dark-color);
+  word-break: break-all;
+  border-radius: 3px;
+}
+
+#current-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 10rem;
+  padding: 1rem;
+  color: var(--primary-text-color);
+  font-weight: bolder;
+  font-size: 1rem;
+  word-break: break-all;
+  background-color: var(--primary-dark-color);
+  border-radius: 5px;
+}
+
+/* Error Message */
+#current-weather > p {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#date-and-minmax-container {
+  display: flex;
+  width: 100%;
+}
+
+#current-date {
+  width: 50%;
+  color: var(--primary-text-color);
+  font-weight: bolder;
+  font-size: 1rem;
+  text-align: right;
+}
+
+#minmax-temperatures {
+  width: 50%;
+  text-align: left;
+}
+
+#maximum {
+  color: #e53935;
+}
+
+#minimum {
+  color: #bdbdbd;
+  font-size: 0.6rem;
+}
+
+/* Current Weather Icon from https://erikflowers.github.io/weather-icons/ */
+.wi {
+  padding-top: 1.5rem;
+  color: var(--primary-text-color);
+  font-size: 6rem;
+}
+
+#current-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+#current-temperature {
+  color: var(--primary-light-color);
+  font-size: 2.5rem;
+  text-shadow: 1px 1px var(--primary-text-color);
+}
+
+#current-description {
+  padding-top: 0.5rem;
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+#forecast-weather {
+  display: flex;
+  margin-top: 0.5rem;
+  border: var(--primary-text-color) solid 2px;
+  border-radius: 3px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.forecast-days {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--primary-light-color);
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: var(--primary-dark-color);
+}
+
+.forecast-days:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.forecast-days:last-child {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.forecast-days-icon {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--primary-text-color);
+  font-size: 1.6rem;
+}
+
+#loader-container {
+  margin: 5rem auto;
+  text-align: center;
+}
+
+#loader-container img {
+  width: 10rem;
+  height: 10rem;
+  transform-origin: 50% 50%;
+  animation: rotate 5s infinite linear;
+}
+
+/* Rainbow and Sun Icons */
+.permanent-icons {
+  display: none;
+  width: 5rem;
+  height: 5rem;
+  transform-origin: 50% 50%;
+  animation: rotate 50s infinite linear;
+}
+
+/* Sun Icon */
+.permanent-icons:nth-of-type(1) {
+  margin-right: 10%;
+}
+
+/* Rainbow Icon */
+.permanent-icons:nth-of-type(2) {
+  margin-left: 10%;
+}
+
+#error-icon {
+  width: 4rem;
+  animation: rotate 5s infinite linear;
+}
+
+/* Icons Animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Queries */
+
+@media (min-width: 640px) {
+  body {
+    padding: 2.5rem 1rem;
+  }
+
+  header {
+    padding-bottom: 2.5rem;
+  }
+
+  #main {
+    width: 80%;
+    max-width: 800px;
+  }
+
+  #current-location {
+    padding: 1rem;
+    font-size: 3rem;
+  }
+
+  .forecast-days {
+    font-size: 1.3rem;
+  }
+
+  .forecast-days-icon {
+    font-size: 2rem;
+  }
+
+  .permanent-icons {
+    display: flex;
+  }
+}
+
+/* GITHUB BANNER */
+
+#github-banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#github-banner-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--primary-light-color);
+  border: 0;
+  fill: var(--primary-dark-color);
+}
+
+.octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}

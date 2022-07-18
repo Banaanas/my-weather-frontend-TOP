@@ -1,0 +1,4 @@
+- On build process, weathericons webfonts aren't sent to the right Folder
+for Production ;
+- It must be done manually : After the Build, COPY (not Cut, because some files still need
+to stay in it) the Font Folder and paste it into Styles Folder
